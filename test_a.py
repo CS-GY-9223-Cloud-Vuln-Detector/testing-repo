@@ -42,3 +42,15 @@ def delete_all_blobs():
     for blob in blobs:
         container_client.delete_blob(blob.name)
     print("Deleted all blobs without authorization check")
+
+
+def download_blob(blob_name):
+    blob_service_client = BlobServiceClient.from_connection_string(connection_string)
+    container_client = blob_service_client.get_container_client("sensitive-data")
+    blob_client = container_client.get_blob_client(blob_name)
+
+    # VULNERABILITY: No validation of blob name
+    with open(blob_name, "wb") as download_file:
+        download_file.write(blob_client.download_blob().readall())
+    print(f"Downloaded blob: {blob_name}")
+    return "Downloaded blob: {}".format(blob_name)
