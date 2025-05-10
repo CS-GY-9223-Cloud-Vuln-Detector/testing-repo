@@ -17,7 +17,7 @@ app.secret_key = "development-weak-key-1234"
 SUBSCRIPTION_ID = "12345678-1234-1234-1234-123456789012"
 APP_SERVICE_NAME = "vulnerable-app-service"
 RESOURCE_GROUP = "test-resource-group"
-FTP_USERNAME = "deploy-user"
+FTP_USERNAME = "deploy-user-1"
 FTP_PASSWORD = "Deploy@Password123"
 
 # VULNERABILITY: Debug mode in production
